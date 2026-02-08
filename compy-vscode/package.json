@@ -1,0 +1,28 @@
+{
+  "name": "compy-lang",
+  "displayName": "Compy",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.50.0"
+  },
+  "contributes": {
+    "languages": [
+      {
+        "id": "compy",
+        "aliases": [
+          "Compy"
+        ],
+        "extensions": [
+          ".cmpy"
+        ]
+      }
+    ],
+    "grammars": [
+      {
+        "language": "compy",
+        "scopeName": "source.compy",
+        "path": "./syntaxes/compy.tmLanguage.json"
+      }
+    ]
+  }
+}

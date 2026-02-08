@@ -1,0 +1,48 @@
+# Include the libraries
+include string.h
+# Compy Standard Library
+include "comlib.h"
+
+# Function
+def mifn(int a):
+    x = input_int("Enter number: ")
+    print(x)
+    y = pow_int(x, 2)
+    print(y)
+    # Required to set function type "int"
+    return 0
+
+# Inline C Variable for glabal use
+__inline_c_global__ {
+char op[10];
+int a, b;
+}
+
+# Inline C Scope BLock
+__inline_c__ {
+    scanf("%9s", &op);
+    scanf("%d", &a);
+    scanf("%d", &b);
+}
+
+# Variables
+str name = "Anish"
+
+# Calling requires a ;
+mifn(56);
+int t = 56
+
+# Formatted Print
+fprint_str("T is ${name}")
+fprint_int("T is = ${t}")
+
+# Another Inline C BLock
+__inline_c__ {
+    printf("Your name is %s, and age %d\n", name, t);
+}
+
+# Strcmp comes from C, not standard in Compy
+if strcmp(op, "+") == 0:
+    int c = a + b
+    # Normal Variable Print
+    print(c)
