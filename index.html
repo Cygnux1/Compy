@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Compy – Python-like syntax to C</title>
+    <meta name="description"
+        content="Compy: very small language with Python-style syntax that compiles to plain C code." />
+
+    <style>
+        :root {
+            --bg: #0d0d0d;
+            --text: #e0e0e0;
+            --text2: #999;
+            --accent: #6ca8d7;
+            --border: #222;
+            --codebg: #111;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 5rem 0 3rem;
+        }
+
+        h1 {
+            font-size: 3.6rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.3rem;
+        }
+
+        .tagline {
+            font-size: 1.35rem;
+            color: var(--text2);
+            margin-bottom: 2.5rem;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        nav {
+            text-align: center;
+            margin: 2rem 0 4rem;
+        }
+
+        nav a {
+            margin: 0 1.4rem;
+            font-weight: 500;
+        }
+
+        section {
+            margin: 5rem 0;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.2rem;
+            color: var(--text);
+            padding-bottom: 0.4rem;
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
+        }
+
+        p,
+        li {
+            font-size: 1.1rem;
+            color: var(--text2);
+            margin-bottom: 1rem;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 1.6rem;
+        }
+
+        ul li {
+            position: relative;
+            margin-bottom: 0.9rem;
+        }
+
+        ul li:before {
+            content: "→";
+            position: absolute;
+            left: -1.6rem;
+            color: var(--accent);
+        }
+
+        pre {
+            background: var(--codebg);
+            padding: 1.4rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: "SF Mono", Consolas, monospace;
+            font-size: 0.96rem;
+            border: 1px solid var(--border);
+            margin: 1.5rem 0;
+        }
+
+        code {
+            font-family: inherit;
+        }
+
+        .small {
+            font-size: 0.95rem;
+            color: var(--text2);
+        }
+
+        footer {
+            text-align: center;
+            padding: 5rem 0 3rem;
+            color: var(--text2);
+            border-top: 1px solid var(--border);
+            margin-top: 6rem;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 640px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+
+            nav a {
+                margin: 0 0.9rem;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Compy</h1>
+        <div class="tagline">Python-like syntax → readable C code</div>
+
+        <a href="install.html" target="_blank" rel="noopener">Install Binary (0.1.0 Windows only)</a>
+
+        <div style="margin:2rem 0;">
+            <a href="https://github.com/Cygnux1/Compy" target="_blank" rel="noopener">github.com/Cygnux1/Compy</a>
+        </div>
+    </header>
+
+    <nav>
+        <a href="#about">About</a>
+        <a href="#features">Features</a>
+        <a href="#stdlib">Stdlib</a>
+        <a href="#usage">Usage</a>
+    </nav>
+
+    <main>
+
+        <section id="about">
+            <h2>About</h2>
+            <p>Compy is a very small transpiler that takes Python-looking code and turns it into plain C.</p>
+            <p>It produces readable output, adds no runtime, and supports dropping real C code with
+                <code>__inline_c__</code> and <code>__inline_c_global__</code> blocks.</p>
+        </section>
+
+        <section id="features">
+            <h2>What it understands</h2>
+            <ul>
+                <li><code>def name(args):</code> → <code>int name(args) {</code></li>
+                <li><code>if cond:</code> / <code>else:</code></li>
+                <li><code>return value</code></li>
+                <li><code>print(expr)</code> → <code>printf(…)</code> with basic type guessing</li>
+                <li><code>fprint_str("text ${x}")</code> / <code>fprint_int()</code> / <code>fprint_flt()</code></li>
+                <li>Short type names: <code>int</code>, <code>flt</code>, <code>str</code>, <code>bool</code>,
+                    <code>char</code>, <code>double</code></li>
+                <li><code>include stdio.h</code> or <code>include "file.h"</code></li>
+                <li>Indent-based blocks (automatically adds/closes braces)</li>
+                <li>Raw C inside <code>__inline_c__ {…}</code> blocks</li>
+                <li>Global raw C with <code>__inline_c_global__ {…}</code></li>
+            </ul>
+        </section>
+
+        <section id="stdlib">
+            <h2>Compy stdlib (included when you use it)</h2>
+            <ul>
+                <li><code>pow_int(base, exp)</code></li>
+                <li><code>sqrt_flt(x)</code></li>
+                <li><code>abs_int(x)</code></li>
+                <li><code>len_str(s)</code></li>
+                <li><code>concat(a, b)</code> → new allocated string</li>
+                <li><code>substr(s, start, len)</code> → new allocated string</li>
+                <li><code>seed_rand()</code> / <code>rand_int(min,max)</code> / <code>rand_flt(min,max)</code></li>
+                <li><code>input_str(buf, maxlen, prompt)</code></li>
+                <li><code>input_int(prompt)</code> / <code>input_flt(prompt)</code></li>
+                <li><code>write_file(path, content)</code></li>
+                <li><code>read_file(path)</code> → allocated string or NULL</li>
+            </ul>
+        </section>
+
+        <section id="usage">
+            <h2>Quick usage</h2>
+            <ol>
+                <li>Write code in <code>.cmpy</code> file</li>
+                <li>Run: <code>./compy yourfile.cmpy</code></li>
+                <li>Compile generated file: <code>gcc out.c -O3 -o program </code></li>
+                <li>Run: <code>./program</code></li>
+            </ol>
+
+            <p class="small" style="margin-top:2rem;">
+                Output always goes to <code>out.c</code> in current directory.<br>
+                Compiler itself is tiny (~400 LOC).
+            </p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Cygnux1/Compy — MIT licensed · 2026</p>
+        <p><a href="https://github.com/Cygnux1/Compy">github.com/Cygnux1/Compy</a></p>
+    </footer>
+
+</body>
+
+</html>

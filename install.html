@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Compy – Download & Install (Windows)</title>
+    <meta name="description"
+        content="Download compy.exe – the Compy compiler for Windows. Tiny Python-like → C transpiler." />
+
+    <style>
+        :root {
+            --bg: #0d0d0d;
+            --text: #e0e0e0;
+            --text2: #999;
+            --accent: #6ca8d7;
+            --border: #222;
+            --codebg: #111;
+            --success: #4a8c4a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 0 2.5rem;
+        }
+
+        h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.4rem;
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            color: var(--text2);
+            margin-bottom: 2rem;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: var(--accent);
+            color: #000;
+            font-weight: 600;
+            padding: 1rem 2.2rem;
+            border-radius: 6px;
+            font-size: 1.2rem;
+            margin: 1.5rem 0.8rem;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .download-btn:hover {
+            background: #8cc0f0;
+            transform: translateY(-2px);
+        }
+
+        .secondary-btn {
+            background: #333;
+            color: var(--text);
+        }
+
+        section {
+            margin: 4rem 0;
+        }
+
+        h2 {
+            font-size: 1.9rem;
+            margin-bottom: 1.1rem;
+            color: var(--text);
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
+            padding-bottom: 0.3rem;
+        }
+
+        p,
+        li {
+            font-size: 1.08rem;
+            color: var(--text2);
+            margin-bottom: 1rem;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 1.5rem;
+        }
+
+        ul li {
+            position: relative;
+            margin-bottom: 0.9rem;
+        }
+
+        ul li:before {
+            content: "→";
+            position: absolute;
+            left: -1.5rem;
+            color: var(--accent);
+        }
+
+        pre,
+        .hash {
+            background: var(--codebg);
+            padding: 1rem 1.4rem;
+            border-radius: 6px;
+            font-family: "SF Mono", Consolas, monospace;
+            font-size: 0.95rem;
+            border: 1px solid var(--border);
+            overflow-x: auto;
+            margin: 1.2rem 0;
+        }
+
+        .hash {
+            color: #aaa;
+        }
+
+        .note {
+            font-size: 0.97rem;
+            color: var(--text2);
+            background: #1a1a1a;
+            padding: 1rem;
+            border-left: 4px solid var(--accent);
+            margin: 1.5rem 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 4rem 0 2rem;
+            color: var(--text2);
+            border-top: 1px solid var(--border);
+            margin-top: 5rem;
+            font-size: 0.95rem;
+        }
+
+        .back {
+            display: block;
+            text-align: center;
+            margin: 3rem 0;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 640px) {
+            h1 {
+                font-size: 2.6rem;
+            }
+
+            .download-btn {
+                padding: 0.9rem 1.8rem;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Compy</h1>
+        <div class="tagline">Download for Windows Only</div>
+
+        <div style="margin: 2.5rem 0;">
+            <a href="https://github.com/Cygnux1/Compy" target="_blank" rel="noopener">github.com/Cygnux1/Compy</a>
+        </div>
+    </header>
+
+    <main>
+
+        <section id="download">
+            <h2>Download Options</h2>
+            <p>Select what you want to download. All files are for <strong>Windows only</strong>.</p>
+
+            <div style="text-align:center; margin:2.5rem 0;">
+                <a href="compy.exe" class="download-btn" download>Compy.exe Only</a>
+                <a href="compy_with_docs.zip" class="download-btn" download>Exe + Docs</a>
+                <a href="compy_all.zip" class="download-btn" download>All (Exe + Docs + Src)</a>
+                <a href="src.zip" class="download-btn secondary-btn" download>Source Only</a>
+            </div>
+
+            <div class="note">
+                <strong>SHA256 (compy.exe):</strong><br>
+                <code class="hash">a8151f67f5433ee5d9d5bcbd5d0e7e7d4565434850057d022695cd67386e3330
+</code><br>
+                (compute with: <code>certutil -hashfile compy.exe SHA256</code> in cmd)
+            </div>
+
+            <p class="small" style="margin-top:1.8rem; color:#777;">
+                Version: early / in-development · Built for Windows (x64)<br>
+                Antivirus may flag unknown small exes — it's normal for hobby tools.
+            </p>
+        </section>
+
+        <section id="howto">
+            <h2>How to Use After Download</h2>
+            <ol>
+                <li>Put <code>compy.exe</code> in any folder.</li>
+                <li>Optional: <strong>Add to PATH</strong> for easy terminal access:
+                    <pre>1. Press Win + S → "Environment Variables" → "Edit the system environment variables"
+2. Click "Environment Variables…" → Under "System variables" find "Path" → Edit
+3. Add the folder containing compy.exe → OK all dialogs
+4. Open new CMD / PowerShell and run <code>compy.exe</code></pre>
+                </li>
+                <li>Create your program: <code>hello.cmpy</code></li>
+                <li>Run: <code>compy.exe hello.cmpy</code> → creates <code>out.c</code></li>
+                <li>Compile: <code>gcc -o hello out.c</code> (MinGW, MSYS2, or WSL required)</li>
+                <li>Run your program: <code>hello.exe</code></li>
+            </ol>
+
+            <div class="note">
+                <strong>No gcc yet?</strong> Quick options:<br>
+                • Install MinGW-w64 (simple)<br>
+                • Use MSYS2 (more complete)<br>
+                • Use WSL + gcc (if you like Linux tools on Windows)
+            </div>
+        </section>
+
+        <section id="whats-included">
+            <h2>What's Included</h2>
+            <ul>
+                <li><strong>compy.exe</strong> — the compiler (~100–300 KB)</li>
+                <li><strong>compy_stdlib.h</strong> — optional helpers (concat, input_*, rand_*, file read/write)</li>
+                <li><strong>Docs</strong> — usage guide, examples</li>
+                <li><strong>Source</strong> — .cmpy examples + core source code</li>
+            </ul>
+        </section>
+
+    </main>
+
+    <div class="back">
+        <a href="index.html">← Back to main page</a>
+    </div>
+
+    <footer>
+        <p>Cygnux1/Compy · Kolkata, 2026</p>
+        <p><a href="https://github.com/Cygnux1/Compy">github.com/Cygnux1/Compy</a></p>
+    </footer>
+
+</body>
+
+</html>
