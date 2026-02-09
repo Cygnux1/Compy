@@ -30,10 +30,9 @@
 
 ## Documentation
 
-Detailed documentation is available in the `docs/` directory:  
+Detailed documentation is available in the `website`.  
 
-- [Run Guide](docs/run.md) – Instructions for compiling and executing Compy code.  
-- [Supported Features](docs/supported.md) – Full list of supported language features.
+[Compy Site](https://cygnux1.github.io/Compy)
 
 ---
 
